@@ -12,6 +12,4 @@ Don't forget to create the .env file. If you are unsure of how to do this, watch
 
 [Video Explanation of Stretch Assignment](https://youtu.be/S25ggtvC4AM)
 
-Github:
-
-Render:
+CSE341 Contacts API Project
