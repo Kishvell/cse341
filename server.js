@@ -15,11 +15,17 @@ app.use((req, res, next) => {
 app.use("/contacts", require("./routes/contacts"));
 
 const start = async () => {
-  await connectDB(process.env.MONGODB_URI);
+  try {
+    await connectDB(process.env.MONGODB_URI);
 
-  app.listen(8080, () => {
-    console.log("Server running on 8080");
-  });
+    const PORT = process.env.PORT || 8080;
+
+    app.listen(PORT, () => {
+      console.log(`Server running on ${PORT}`);
+    });
+  } catch (err) {
+    console.error("Database connection failed:", err);
+  }
 };
 
 start();
