@@ -1,10 +1,9 @@
 {
   "name": "cse341",
   "version": "1.0.0",
-  "description": "Run npm install and npm start from the backend folder in the terminal",
+  "description": "Contacts API - CSE341",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
