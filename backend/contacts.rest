@@ -1,0 +1,35 @@
+GET http://localhost:8080/contacts
+
+###
+
+GET http://localhost:8080/contacts/69f8d71fa5ce30c687ae8792
+
+###
+
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Maria",
+  "lastName": "Lopez",
+  "email": "maria@email.com",
+  "favoriteColor": "Purple",
+  "birthday": "1999-02-14"
+}
+
+###
+
+PUT http://localhost:8080/contacts/69f8d71fa5ce30c687ae8792
+Content-Type: application/json
+
+{
+  "firstName": "Juan Updated",
+  "lastName": "Perez",
+  "email": "juanupdated@email.com",
+  "favoriteColor": "Green",
+  "birthday": "2001-01-01"
+}
+
+###
+
+DELETE http://localhost:8080/contacts/6a08b2858422128dfe0752e0
