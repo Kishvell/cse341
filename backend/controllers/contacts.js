@@ -1,4 +1,5 @@
 const { ObjectId } = require("mongodb");
+const { validationResult } = require("express-validator");
 const { getDB } = require("../database/connect");
 
 // GET all contacts
@@ -10,6 +11,7 @@ const getAll = async (req, res) => {
       .toArray();
 
     res.status(200).json(result);
+
   } catch (err) {
     res.status(500).json({
       message: err.message
@@ -20,6 +22,7 @@ const getAll = async (req, res) => {
 // GET single contact
 const getSingle = async (req, res) => {
   try {
+
     const contactId = new ObjectId(req.params.id);
 
     const result = await getDB()
@@ -33,6 +36,7 @@ const getSingle = async (req, res) => {
     }
 
     res.status(200).json(result);
+
   } catch (err) {
     res.status(500).json({
       message: err.message
@@ -43,6 +47,15 @@ const getSingle = async (req, res) => {
 // POST create contact
 const createContact = async (req, res) => {
   try {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      });
+    }
+
     const contact = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -59,6 +72,7 @@ const createContact = async (req, res) => {
       message: "Contact created successfully",
       id: response.insertedId
     });
+
   } catch (err) {
     res.status(500).json({
       message: err.message
@@ -69,6 +83,15 @@ const createContact = async (req, res) => {
 // PUT update contact
 const updateContact = async (req, res) => {
   try {
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      });
+    }
+
     const contactId = new ObjectId(req.params.id);
 
     const updatedContact = {
@@ -93,6 +116,7 @@ const updateContact = async (req, res) => {
         message: "Contact not found"
       });
     }
+
   } catch (err) {
     res.status(500).json({
       message: err.message
@@ -103,6 +127,7 @@ const updateContact = async (req, res) => {
 // DELETE contact
 const deleteContact = async (req, res) => {
   try {
+
     const contactId = new ObjectId(req.params.id);
 
     const response = await getDB()
@@ -116,6 +141,7 @@ const deleteContact = async (req, res) => {
         message: "Contact not found"
       });
     }
+
   } catch (err) {
     res.status(500).json({
       message: err.message
