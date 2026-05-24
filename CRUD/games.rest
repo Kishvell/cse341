@@ -1,0 +1,56 @@
+GET http://localhost:8080/games
+
+###
+
+GET http://localhost:8080/games/6a12157cb63b97218543de5b
+
+###
+
+POST http://localhost:8080/games
+Content-Type: application/json
+
+{
+  "title": "Cyberpunk 2077",
+  "genre": "RPG",
+  "developer": "CD Projekt Red",
+  "releaseYear": 2020,
+  "platform": "PC",
+  "rating": 8,
+  "multiplayer": false,
+  "price": 59.99
+}
+
+###
+
+PUT http://localhost:8080/games/6a137f7345691bbcdd19af98
+Content-Type: application/json
+
+{
+  "title": "Cyberpunk 2077 Updated",
+  "genre": "RPG",
+  "developer": "CD Projekt Red",
+  "releaseYear": 2020,
+  "platform": "PC",
+  "rating": 9,
+  "multiplayer": false,
+  "price": 49.99
+}
+
+###
+
+DELETE http://localhost:8080/games/6a137f7345691bbcdd19af98
+
+###
+
+POST http://localhost:8080/games
+Content-Type: application/json
+
+{
+  "title": "",
+  "genre": "",
+  "developer": "",
+  "releaseYear": "",
+  "platform": "",
+  "rating": "",
+  "price": ""
+}
