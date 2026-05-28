@@ -1,11 +1,11 @@
 const { ObjectId } = require("mongodb");
-const { gamesDB } = require("../database/connect");
+const { getDB } = require("../database/connect");
 const { validationResult } = require("express-validator");
 
 // GET all games
 const getAllGames = async (req, res) => {
   try {
-    const result = await getDB()
+    const result = await getDB("gamesDB")
       .collection("games")
       .find()
       .toArray();
