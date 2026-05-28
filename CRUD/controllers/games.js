@@ -23,7 +23,7 @@ const getSingleGame = async (req, res) => {
   try {
     const gameId = new ObjectId(req.params.id);
 
-    const result = await getDB()
+    const result = await getDB("gamesDB")
       .collection("games")
       .findOne({ _id: gameId });
 
@@ -64,7 +64,7 @@ const createGame = async (req, res) => {
       price: req.body.price
     };
 
-    const response = await getDB()
+    const response = await getDB("gamesDB")
       .collection("games")
       .insertOne(game);
 
@@ -104,7 +104,7 @@ const updateGame = async (req, res) => {
       price: req.body.price
     };
 
-    const response = await getDB()
+    const response = await getDB("gamesDB")
       .collection("games")
       .replaceOne(
         { _id: gameId },
@@ -130,7 +130,7 @@ const deleteGame = async (req, res) => {
   try {
     const gameId = new ObjectId(req.params.id);
 
-    const response = await getDB()
+    const response = await getDB("gamesDB")
       .collection("games")
       .deleteOne({ _id: gameId });
 
