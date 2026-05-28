@@ -6,8 +6,8 @@ const doc = {
     description: "API documentation for Games Project"
   },
   host: "https://cse341-l7no.onrender.com/",
-  basePath: "/contacts",
-  schemes: ["https", "http"]
+  basePath: "/games",
+  schemes: ["https","http"]
 };
 
 const outputFile = "./swagger.json";
