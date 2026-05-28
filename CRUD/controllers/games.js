@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const { getDB } = require("../database/connect");
+const { gamesDB } = require("../database/connect");
 const { validationResult } = require("express-validator");
 
 // GET all games
