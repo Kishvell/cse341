@@ -5,6 +5,8 @@ const { body } = require("express-validator");
 
 const gamesController = require("../controllers/games");
 
+const { isAuthenticated } = require("../middleware/authenticate");
+
 /**
  * #swagger.tags = ['Games']
  */
@@ -46,9 +48,10 @@ router.get("/", gamesController.getAllGames);
 // GET single game
 router.get("/:id", gamesController.getSingleGame);
 
-// POST create game
+// POST create game (Protected)
 router.post(
   "/",
+  isAuthenticated,
   gameValidation,
   gamesController.createGame
 );
@@ -60,7 +63,11 @@ router.put(
   gamesController.updateGame
 );
 
-// DELETE game
-router.delete("/:id", gamesController.deleteGame);
+// DELETE game (Protected)
+router.delete(
+  "/:id",
+  isAuthenticated,
+  gamesController.deleteGame
+);
 
 module.exports = router;
