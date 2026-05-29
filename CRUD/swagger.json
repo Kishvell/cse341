@@ -5,10 +5,10 @@
     "description": "API documentation for Games Project",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
-  "basePath": "/",
+  "host": "cse341-l7no.onrender.com",
+  "basePath": "/games",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/games/": {
