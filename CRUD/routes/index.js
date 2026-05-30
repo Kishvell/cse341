@@ -16,14 +16,36 @@ router.get(
   })
 );
 
-// Google Callback
+// Google Callback (Debug Version)
 router.get(
   "/auth/google/callback",
-  passport.authenticate("google", {
-    failureRedirect: "/api-docs"
-  }),
-  (req, res) => {
-    res.send("Login Successful");
+  (req, res, next) => {
+    passport.authenticate("google", (err, user) => {
+      if (err) {
+        console.error("OAuth Error:", err);
+        return res.status(500).json({
+          error: err.message,
+          stack: err.stack
+        });
+      }
+
+      if (!user) {
+        return res.status(401).json({
+          error: "No user returned from Google"
+        });
+      }
+
+      req.logIn(user, (err) => {
+        if (err) {
+          console.error("Login Error:", err);
+          return res.status(500).json({
+            error: err.message
+          });
+        }
+
+        return res.send("Login Successful");
+      });
+    })(req, res, next);
   }
 );
 
