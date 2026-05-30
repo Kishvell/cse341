@@ -39,7 +39,7 @@ app.use(
 );
 
 // MongoDB connection
-connectDB();
+connectDB(process.env.MONGODB_URI);
 
 // Start server
 app.listen(port, () => {
