@@ -29,7 +29,7 @@ app.use(passport.session());
 
 // Routes
 app.use("/games", require("./routes/games"));
-app.use("/", require("./routes"));
+app.use("/consoles", require("./routes/consoles"));
 
 // Swagger
 app.use(
